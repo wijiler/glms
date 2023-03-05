@@ -13,5 +13,7 @@ pub fn glms_get_file_contents(path: &str) -> String {
         println!("Error: File {} is empty",path);
         process::exit(-1);
     } 
-    return file;
+    else {
+       return file
+    }
 }

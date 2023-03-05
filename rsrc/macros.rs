@@ -20,6 +20,7 @@ pub const fn abs(a:i32) -> i32 {
     let b = if a < 0 {a * -1} else {a};  
     b
 }
+///CLI colors
 pub const RED:&str = "\x1B[31m";
 pub const GREEN:&str = "\x1B[32m";
 pub const YELLOW:&str = "\x1B[33m";

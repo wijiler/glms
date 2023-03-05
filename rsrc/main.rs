@@ -1,6 +1,7 @@
 #![feature(c_variadic)]
 pub mod macros;
 pub mod io;
+pub mod token;
 pub use std::alloc::dealloc;
 /// Rust "rewrite" of glms so I can compile it on my mac/windows machines
 
