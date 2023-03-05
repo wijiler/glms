@@ -2,6 +2,7 @@
 pub mod macros;
 pub mod io;
 pub mod token;
+pub mod lexer;
 pub use std::alloc::dealloc;
 /// Rust "rewrite" of glms so I can compile it on my mac/windows machines
 
