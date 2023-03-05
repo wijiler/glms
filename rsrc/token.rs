@@ -1,4 +1,5 @@
- enum TOK {
+ #[derive(PartialEq)]
+pub enum TOK {
   GLMS_TOKEN_TYPE_NONE                                                    ,
   GLMS_TOKEN_TYPE_EOF                                                     ,
   GLMS_TOKEN_TYPE_LBRACE                                                  ,
@@ -72,16 +73,16 @@
 }
 
 pub fn glms_token_type_is_flag(tt:TOK) -> bool {
-    if tt == GLMS_TOKEN_TYPE_SPECIAL_USER_TYPE ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_CONST ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_NUMBER ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_INT ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_FLOAT ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_ARRAY ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_OBJECT ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_STRING ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_LET ||
-         tt == GLMS_TOKEN_TYPE_SPECIAL_BOOL {
+    if   tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_USER_TYPE ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_CONST ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_NUMBER ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_INT ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_FLOAT ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_ARRAY ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_OBJECT ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_STRING ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_LET ||
+         tt == TOK::GLMS_TOKEN_TYPE_SPECIAL_BOOL {
             return true;
          }
     else { return false; }
