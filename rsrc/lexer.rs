@@ -56,11 +56,27 @@ pub struct Lexer {
    source:String,
    initialized:bool
 }
-pub fn init(s:String) -> Lexer {
-    if &s.len() <= &0 { glms_error(&["Lexer is not able to read file(EMPTY_FILE_ERROR)"]);}
-    let i: usize = 0;
-    let sou= &s;
-    let le= s.len();
-    let c:char = s.as_bytes()[i] as char;
-    Lexer { it: i, length: le, cc: c, source: sou.to_owned(), initialized: true } 
+impl Lexer {
+pub fn init(&mut self,s:String) -> Self {
+     if &s.len() <= &0 {glms_error(&["Lexer is not able to read file (EMPTY_FILE_ERROR)"]);}
+     let i: usize = 0;
+     let sou= &s;
+     let le= s.len();
+     let c:char = s.as_bytes()[i] as char;
+     Lexer { it: i, length: le, cc: c, source: sou.to_owned(), initialized: true } 
+    }
+/// peek x ahead in the lexer
+pub fn peek(&mut self,p:usize) -> char {
+    if  self.it + p >= self.length {glms_error(&["Lexer peek not within file bounds (LEXER_OUTOFBOUNDS_ERROR)"]);};
+    return self.source.as_bytes()[self.it + p] as char
+   }
+/// detect if whitespace
+pub fn lexer_is_whitespace(&self) -> bool { if self.cc == ' ' || self.cc == '\t' || self.cc == '\n' {true} else {false}}
+/// detect if comment
+pub fn lexer_is_comment(&mut self) -> bool {if self.cc == '/' && self.peek(1) == '/' {true} else {false}}
+pub fn lexer_advance(mut self) {
+    if self.it >= self.length {glms_error(&["Lexer cannot adance (LEXER_OUTOFBOUNDS_ERROR)"])}
+    self.it += 1;
+    self.cc = self.source.as_bytes()[self.it] as  char;
+    }
 }
